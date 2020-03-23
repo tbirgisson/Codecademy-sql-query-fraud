@@ -1,0 +1,33 @@
+--Get sense for data structure
+SELECT *
+ FROM transaction_data
+ LIMIT 10;
+ 
+ --Explore possible fraudulent zip
+ SELECT email, full_name, zip
+ FROM transaction_data
+ WHERE zip = 20252
+ ;
+ 
+ --Explore possible fraudulent names
+ SELECT email, full_name, zip
+ FROM transaction_data
+ WHERE full_name = 'Art Vandelay'
+ OR full_name LIKE '% der %'
+ ;
+ 
+ --Explore possible fraudulent IPs
+ SELECT ip_address, email
+ FROM transaction_data
+ WHERE ip_address LIKE '10.%';
+ 
+ --Explore possible fraudulent emails
+ SELECT email, full_name
+ FROM transaction_data
+ WHERE email LIKE '%temp_email.com';
+ 
+ --Find specific transaction
+ SELECT full_name, email, ip_address
+ FROM transaction_data
+ WHERE ip_address LIKE '120.%'
+ AND full_name LIKE 'John%';
